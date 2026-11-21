@@ -1,0 +1,16 @@
+*.pyc
+*__pycache__*
+*.geojson
+*.csv
+*.DS_Store
+.venv/
+.pytest_cache/
+build/
+dist/
+*.egg-info/
+.coverage
+htmlcov/
+.ruff_cache/
+site/
+examples/cache/
+.cache/

@@ -2,6 +2,22 @@
 node_modules/
 **/node_modules/
 
+# Python environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
 # Production builds
 dist/
 **/dist/
@@ -28,6 +44,7 @@ pnpm-debug.log*
 # OS & Editor
 .DS_Store
 Thumbs.db
+Desktop.ini
 .vscode/
 !.vscode/extensions.json
 .idea/
