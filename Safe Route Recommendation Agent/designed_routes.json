@@ -1,0 +1,735 @@
+[
+    {
+        "id": "route-corridor-01",
+        "name": "B.C. Road Main Town Hall Safe Corridor",
+        "category": "SAFE_CORRIDOR",
+        "category_label": "Designated Safe Corridor",
+        "description": "Primary monitored walking corridor connecting B.C. Road Circle to Bantwal Town Hall along main lit streets.",
+        "lighting": "Well Lit (Streetlights Active)",
+        "police_patrol": "Regularly Monitored by Bantwal Police",
+        "coordinates": [
+            [
+                12.8817322,
+                75.0299664
+            ],
+            [
+                12.8818353,
+                75.0303054
+            ],
+            [
+                12.8819629,
+                75.030668
+            ],
+            [
+                12.8819861,
+                75.0308118
+            ],
+            [
+                12.8821444,
+                75.0307809
+            ],
+            [
+                12.882183,
+                75.0307734
+            ],
+            [
+                12.8821921,
+                75.030834
+            ],
+            [
+                12.8822305,
+                75.0310462
+            ],
+            [
+                12.8822659,
+                75.0313839
+            ],
+            [
+                12.8822905,
+                75.0318644
+            ],
+            [
+                12.8823375,
+                75.0325294
+            ],
+            [
+                12.8823247,
+                75.0326782
+            ],
+            [
+                12.8821522,
+                75.0331801
+            ],
+            [
+                12.8820542,
+                75.0334853
+            ],
+            [
+                12.8820058,
+                75.0336113
+            ],
+            [
+                12.8819541,
+                75.0338031
+            ],
+            [
+                12.8819716,
+                75.0338307
+            ],
+            [
+                12.8819837,
+                75.0338611
+            ],
+            [
+                12.8819899,
+                75.0338934
+            ],
+            [
+                12.8822359,
+                75.0339937
+            ],
+            [
+                12.8822591,
+                75.0340216
+            ],
+            [
+                12.8822648,
+                75.0340235
+            ],
+            [
+                12.8825807,
+                75.0341121
+            ],
+            [
+                12.8838642,
+                75.0344706
+            ],
+            [
+                12.8841965,
+                75.0345772
+            ],
+            [
+                12.8848629,
+                75.0347106
+            ]
+        ],
+        "waypoints": [
+            {
+                "name": "Start: B.C. Road Bus Stand & Circle",
+                "lat": 12.88175,
+                "lon": 75.02991
+            },
+            {
+                "name": "End: Bantwal Town Hall",
+                "lat": 12.885,
+                "lon": 75.035
+            }
+        ],
+        "distance_m": 797.9,
+        "distance_km": 0.8,
+        "walking_time_min": 10.0,
+        "high_risk_distance_m": 0.0,
+        "safe_distance_m": 454.6,
+        "is_active": true,
+        "created_at": "2026-11-21T14:30:12.905403"
+    },
+    {
+        "id": "route-heritage-02",
+        "name": "Sri Venkataramana Temple Heritage Pilgrimage Walk",
+        "category": "HERITAGE_WALK",
+        "category_label": "Official Tourist Heritage Walk",
+        "description": "Curated cultural walking trail from B.C. Road Junction via Town Hall to the historic Sri Venkataramana Temple.",
+        "lighting": "Adequate Lighting",
+        "police_patrol": "Festival & Daily Patrols",
+        "coordinates": [
+            [
+                12.8817322,
+                75.0299664
+            ],
+            [
+                12.8818353,
+                75.0303054
+            ],
+            [
+                12.8819629,
+                75.030668
+            ],
+            [
+                12.8819861,
+                75.0308118
+            ],
+            [
+                12.8821444,
+                75.0307809
+            ],
+            [
+                12.882183,
+                75.0307734
+            ],
+            [
+                12.8821921,
+                75.030834
+            ],
+            [
+                12.8822305,
+                75.0310462
+            ],
+            [
+                12.8822659,
+                75.0313839
+            ],
+            [
+                12.8822905,
+                75.0318644
+            ],
+            [
+                12.8823375,
+                75.0325294
+            ],
+            [
+                12.8823247,
+                75.0326782
+            ],
+            [
+                12.8821522,
+                75.0331801
+            ],
+            [
+                12.8820542,
+                75.0334853
+            ],
+            [
+                12.8820058,
+                75.0336113
+            ],
+            [
+                12.8819541,
+                75.0338031
+            ],
+            [
+                12.8819716,
+                75.0338307
+            ],
+            [
+                12.8819837,
+                75.0338611
+            ],
+            [
+                12.8819899,
+                75.0338934
+            ],
+            [
+                12.8822359,
+                75.0339937
+            ],
+            [
+                12.8822591,
+                75.0340216
+            ],
+            [
+                12.8822648,
+                75.0340235
+            ],
+            [
+                12.8825807,
+                75.0341121
+            ],
+            [
+                12.8838642,
+                75.0344706
+            ],
+            [
+                12.8841965,
+                75.0345772
+            ],
+            [
+                12.8848629,
+                75.0347106
+            ],
+            [
+                12.884978,
+                75.0347562
+            ],
+            [
+                12.8860608,
+                75.0348642
+            ],
+            [
+                12.886921,
+                75.0350198
+            ],
+            [
+                12.8872766,
+                75.0350681
+            ],
+            [
+                12.8875712,
+                75.0350872
+            ],
+            [
+                12.8876358,
+                75.0350914
+            ],
+            [
+                12.8882593,
+                75.0351103
+            ],
+            [
+                12.8886702,
+                75.0351137
+            ],
+            [
+                12.8890258,
+                75.0350949
+            ],
+            [
+                12.88935,
+                75.035044
+            ],
+            [
+                12.8895932,
+                75.0349876
+            ],
+            [
+                12.8897866,
+                75.0349259
+            ],
+            [
+                12.8901261,
+                75.0347937
+            ],
+            [
+                12.8909419,
+                75.0344906
+            ],
+            [
+                12.8913946,
+                75.0343519
+            ],
+            [
+                12.8918234,
+                75.0342768
+            ],
+            [
+                12.8922388,
+                75.0342385
+            ],
+            [
+                12.892647,
+                75.0342393
+            ],
+            [
+                12.8930104,
+                75.0342688
+            ],
+            [
+                12.8934781,
+                75.0343726
+            ],
+            [
+                12.8941425,
+                75.0345028
+            ]
+        ],
+        "waypoints": [
+            {
+                "name": "Start: B.C. Road Circle",
+                "lat": 12.88175,
+                "lon": 75.02991
+            },
+            {
+                "name": "Checkpoint: Town Hall",
+                "lat": 12.885,
+                "lon": 75.035
+            },
+            {
+                "name": "End: Sri Venkataramana Temple",
+                "lat": 12.8941,
+                "lon": 75.0345
+            }
+        ],
+        "distance_m": 1849.5,
+        "distance_km": 1.85,
+        "walking_time_min": 23.2,
+        "high_risk_distance_m": 0.0,
+        "safe_distance_m": 454.6,
+        "is_active": true,
+        "created_at": "2026-11-21T14:30:12.913437"
+    },
+    {
+        "id": "abd78a12-4889-4b6f-940d-dccaec1fed58",
+        "name": "B.C. Road Police Safe Passage Corridor",
+        "category": "SAFE_CORRIDOR",
+        "category_label": "Designated Safe Corridor",
+        "description": "Designated secure walking corridor monitored by police with active streetlights.",
+        "lighting": "Well Lit (Active Streetlights)",
+        "police_patrol": "Regular Police Patrols",
+        "coordinates": [
+            [
+                12.8817322,
+                75.0299664
+            ],
+            [
+                12.8818353,
+                75.0303054
+            ],
+            [
+                12.8819629,
+                75.030668
+            ],
+            [
+                12.8819861,
+                75.0308118
+            ],
+            [
+                12.8821444,
+                75.0307809
+            ],
+            [
+                12.882183,
+                75.0307734
+            ],
+            [
+                12.8821921,
+                75.030834
+            ],
+            [
+                12.8822305,
+                75.0310462
+            ],
+            [
+                12.8822659,
+                75.0313839
+            ],
+            [
+                12.8822905,
+                75.0318644
+            ],
+            [
+                12.8823375,
+                75.0325294
+            ],
+            [
+                12.8823247,
+                75.0326782
+            ],
+            [
+                12.8821522,
+                75.0331801
+            ],
+            [
+                12.8820542,
+                75.0334853
+            ],
+            [
+                12.8820058,
+                75.0336113
+            ],
+            [
+                12.8819541,
+                75.0338031
+            ],
+            [
+                12.8819716,
+                75.0338307
+            ],
+            [
+                12.8819837,
+                75.0338611
+            ],
+            [
+                12.8819899,
+                75.0338934
+            ],
+            [
+                12.8822359,
+                75.0339937
+            ],
+            [
+                12.8822591,
+                75.0340216
+            ],
+            [
+                12.8822648,
+                75.0340235
+            ],
+            [
+                12.8825807,
+                75.0341121
+            ],
+            [
+                12.8838642,
+                75.0344706
+            ],
+            [
+                12.8841965,
+                75.0345772
+            ],
+            [
+                12.8848629,
+                75.0347106
+            ]
+        ],
+        "waypoints": [
+            {
+                "name": "Start: B.C. Road Circle",
+                "lat": 12.88175,
+                "lon": 75.02991
+            },
+            {
+                "name": "Destination: Town Hall",
+                "lat": 12.885,
+                "lon": 75.035
+            }
+        ],
+        "distance_m": 797.9,
+        "distance_km": 0.8,
+        "walking_time_min": 10.0,
+        "high_risk_distance_m": 0.0,
+        "safe_distance_m": 454.6,
+        "restricted_violations": 0,
+        "is_active": true,
+        "created_at": "2026-11-21T14:39:03.681213"
+    },
+    {
+        "id": "148465fa-53f7-4a82-8403-68e468d28bbb",
+        "name": "B.C. Road Scenic River Path",
+        "category": "SAFE_CORRIDOR",
+        "category_label": "Designated Safe Corridor",
+        "description": "Custom curated pathway designed directly on satellite map.",
+        "lighting": "Well Lit",
+        "police_patrol": "Regular Patrols",
+        "coordinates": [
+            [
+                12.882094,
+                75.029547
+            ],
+            [
+                12.882345,
+                75.03251
+            ],
+            [
+                12.881801,
+                75.03384
+            ],
+            [
+                12.884814,
+                75.034656
+            ],
+            [
+                12.887114,
+                75.034957
+            ],
+            [
+                12.888662,
+                75.035043
+            ]
+        ],
+        "waypoints": [
+            {
+                "name": "Start",
+                "lat": 12.882094,
+                "lon": 75.029547
+            },
+            {
+                "name": "End",
+                "lat": 12.888662,
+                "lon": 75.035043
+            }
+        ],
+        "distance_m": 1255.4,
+        "distance_km": 1.26,
+        "walking_time_min": 15.7,
+        "high_risk_distance_m": 0.0,
+        "safe_distance_m": 144.0,
+        "restricted_violations": 0,
+        "is_active": true,
+        "created_at": "2026-11-21T14:42:34.864586"
+    },
+    {
+        "id": "ba7885d3-29e0-4291-8545-48bc2df6c801",
+        "name": "B.C. Road Police Safe Passage Corridor",
+        "category": "SAFE_CORRIDOR",
+        "category_label": "Designated Safe Corridor",
+        "description": "Designated secure walking corridor monitored by police with active streetlights.",
+        "lighting": "Well Lit (Active Streetlights)",
+        "police_patrol": "Regular Police Patrols",
+        "coordinates": [
+            [
+                12.8817322,
+                75.0299664
+            ],
+            [
+                12.8818353,
+                75.0303054
+            ],
+            [
+                12.8819629,
+                75.030668
+            ],
+            [
+                12.8819861,
+                75.0308118
+            ],
+            [
+                12.8821444,
+                75.0307809
+            ],
+            [
+                12.882183,
+                75.0307734
+            ],
+            [
+                12.8821921,
+                75.030834
+            ],
+            [
+                12.8822305,
+                75.0310462
+            ],
+            [
+                12.8822659,
+                75.0313839
+            ],
+            [
+                12.8822905,
+                75.0318644
+            ],
+            [
+                12.8823375,
+                75.0325294
+            ],
+            [
+                12.8823247,
+                75.0326782
+            ],
+            [
+                12.8821522,
+                75.0331801
+            ],
+            [
+                12.8820542,
+                75.0334853
+            ],
+            [
+                12.8820058,
+                75.0336113
+            ],
+            [
+                12.8819541,
+                75.0338031
+            ],
+            [
+                12.8819716,
+                75.0338307
+            ],
+            [
+                12.8819837,
+                75.0338611
+            ],
+            [
+                12.8819899,
+                75.0338934
+            ],
+            [
+                12.8822359,
+                75.0339937
+            ],
+            [
+                12.8822591,
+                75.0340216
+            ],
+            [
+                12.8822648,
+                75.0340235
+            ],
+            [
+                12.8825807,
+                75.0341121
+            ],
+            [
+                12.8838642,
+                75.0344706
+            ],
+            [
+                12.8841965,
+                75.0345772
+            ],
+            [
+                12.8848629,
+                75.0347106
+            ]
+        ],
+        "waypoints": [
+            {
+                "name": "Start: B.C. Road Circle",
+                "lat": 12.88175,
+                "lon": 75.02991
+            },
+            {
+                "name": "Destination: Town Hall",
+                "lat": 12.885,
+                "lon": 75.035
+            }
+        ],
+        "distance_m": 797.9,
+        "distance_km": 0.8,
+        "walking_time_min": 10.0,
+        "high_risk_distance_m": 0.0,
+        "safe_distance_m": 454.6,
+        "restricted_violations": 0,
+        "is_active": true,
+        "created_at": "2026-11-21T14:43:03.181362"
+    },
+    {
+        "id": "e8c8a4f2-ce4a-449e-aec5-1162601c43bc",
+        "name": "B.C. Road Scenic River Path",
+        "category": "SAFE_CORRIDOR",
+        "category_label": "Designated Safe Corridor",
+        "description": "Custom curated pathway designed directly on satellite map.",
+        "lighting": "Well Lit",
+        "police_patrol": "Regular Patrols",
+        "coordinates": [
+            [
+                12.881875,
+                75.02979
+            ],
+            [
+                12.882188,
+                75.028792
+            ],
+            [
+                12.882439,
+                75.028105
+            ],
+            [
+                12.882534,
+                75.027268
+            ],
+            [
+                12.882523,
+                75.026935
+            ]
+        ],
+        "waypoints": [
+            {
+                "name": "Start",
+                "lat": 12.881875,
+                "lon": 75.02979
+            },
+            {
+                "name": "End",
+                "lat": 12.882523,
+                "lon": 75.026935
+            }
+        ],
+        "distance_m": 320.6,
+        "distance_km": 0.32,
+        "walking_time_min": 4.0,
+        "high_risk_distance_m": 0.0,
+        "safe_distance_m": 148.1,
+        "restricted_violations": 0,
+        "is_active": true,
+        "created_at": "2026-11-21T14:43:35.555582"
+    }
+]
