@@ -20,11 +20,10 @@ from route_engine import (
     save_designed_routes,
     design_route_from_waypoints,
     design_route_from_coordinates,
-    preview_route_from_waypoints,
-    save_new_designed_route,
     delete_designed_route,
     toggle_designed_route_status,
     validate_route_safety,
+    calculate_polyline_distance,
     BC_ROAD_BOUNDS,
     AVERAGE_WALKING_SPEED_MPS
 )
@@ -441,13 +440,6 @@ else:
     st.title("🛠️ Admin Route Designer Studio")
     st.caption("Design, calibrate, and publish official tourist routes, safe corridors, and emergency trails for B.C. Road.")
 
-    # Show persistent save success notification if present
-    if "admin_save_banner" in st.session_state:
-        st.success(st.session_state["admin_save_banner"])
-        if st.button("✕ Dismiss Notification", key="dismiss_save_banner"):
-            st.session_state.pop("admin_save_banner", None)
-            st.rerun()
-
     tab_network, tab_freehand, tab_manage = st.tabs([
         "📍 Method 1: Waypoint Road-Network Designer",
         "✏️ Method 2: Freehand Map Drawing Tool",
@@ -505,114 +497,21 @@ else:
                 w_lon = st.number_input(f"Lon {i+1}", value=default_lon, format="%.6f", key=f"wp_lon_{i}")
             waypoints_input.append({"name": w_name, "lat": w_lat, "lon": w_lon})
 
-        col_btn1, col_btn2 = st.columns(2)
-        with col_btn1:
-            preview_clicked = st.button("🔍 1. Calculate & Preview Route on Map", use_container_width=True)
-        with col_btn2:
-            save_clicked = st.button("💾 2. Save & Publish Official Route", type="primary", use_container_width=True)
-
-        if preview_clicked:
+        if st.button("🚀 Preview & Validate Designed Route", type="primary"):
             try:
-                with st.spinner("Calculating road network path and checking geofence zones..."):
-                    preview_details = preview_route_from_waypoints(waypoints_input)
-                    st.session_state["admin_waypoint_preview"] = {
-                        "name": route_name,
-                        "category": category,
-                        "description": route_desc,
-                        "lighting": lighting,
-                        "patrol": patrol,
-                        "waypoints": waypoints_input,
-                        "details": preview_details
-                    }
-                    st.success(f"Route preview ready! Distance: {preview_details['distance_m']}m ({preview_details['walking_time_min']} mins walk).")
+                with st.spinner("Generating road network path and checking geofence zones..."):
+                    new_r = design_route_from_waypoints(
+                        name=route_name,
+                        category=category,
+                        description=route_desc,
+                        waypoints=waypoints_input,
+                        lighting=lighting,
+                        patrol=patrol
+                    )
+                    st.success(f"Route '{new_r['name']}' designed and published successfully! Total Distance: {new_r['distance_m']}m ({new_r['walking_time_min']} mins).")
+                    st.rerun()
             except Exception as e:
-                st.error(f"Cannot generate route preview: {e}")
-
-        if save_clicked:
-            if not route_name.strip():
-                st.error("Please enter a Route Name before saving.")
-            else:
-                try:
-                    with st.spinner("Validating and publishing official route..."):
-                        new_r = design_route_from_waypoints(
-                            name=route_name,
-                            category=category,
-                            description=route_desc,
-                            waypoints=waypoints_input,
-                            lighting=lighting,
-                            patrol=patrol
-                        )
-                        st.session_state["admin_save_banner"] = (
-                            f"🎉 **Route Successfully Saved and Published!** '{new_r['name']}' is now live in Tourist Navigation "
-                            f"(Distance: {new_r['distance_m']}m, ~{new_r['walking_time_min']} mins walk)."
-                        )
-                        st.session_state["admin_waypoint_preview"] = {
-                            "name": new_r["name"],
-                            "category": new_r["category"],
-                            "description": new_r["description"],
-                            "lighting": new_r["lighting"],
-                            "patrol": new_r["police_patrol"],
-                            "waypoints": waypoints_input,
-                            "details": {
-                                "coordinates": new_r["coordinates"],
-                                "distance_m": new_r["distance_m"],
-                                "distance_km": new_r["distance_km"],
-                                "walking_time_min": new_r["walking_time_min"],
-                                "safe_distance_m": new_r.get("safe_distance_m", 0),
-                                "high_risk_distance_m": new_r.get("high_risk_distance_m", 0),
-                                "restricted_violations": new_r.get("restricted_violations", 0)
-                            }
-                        }
-                        st.rerun()
-                except Exception as e:
-                    st.error(f"Cannot save route: {e}")
-
-        # Show Satellite Preview Map if route calculated
-        preview_data = st.session_state.get("admin_waypoint_preview")
-        if preview_data:
-            dt = preview_data["details"]
-            st.markdown("---")
-            st.markdown(f"### 🗺️ Route Preview on Satellite Map: **{preview_data['name']}**")
-            col_m1, col_m2, col_m3, col_m4 = st.columns(4)
-            with col_m1:
-                st.metric("Total Walking Distance", f"{dt['distance_m']} m", f"{dt['distance_km']} km")
-            with col_m2:
-                st.metric("Estimated Walk Time", f"{dt['walking_time_min']} mins", f"~{AVERAGE_WALKING_SPEED_MPS*3.6:.1f} km/h")
-            with col_m3:
-                st.metric("Safe Zone Traversal", f"{dt.get('safe_distance_m', 0)} m", "🔵 Preferred")
-            with col_m4:
-                st.metric("Restricted Violations", f"{dt.get('restricted_violations', 0)}", "✅ Compliant", delta_color="normal")
-
-            # Satellite preview map
-            c_lat = waypoints_input[0]["lat"]
-            c_lon = waypoints_input[0]["lon"]
-            m_prev = build_satellite_map(center_lat=c_lat, center_lon=c_lon, zoom=16)
-            add_zones_to_map(m_prev, zones)
-
-            # Waypoint markers
-            for i, wp in enumerate(waypoints_input):
-                is_first = (i == 0)
-                is_last = (i == len(waypoints_input) - 1)
-                color = "green" if is_first else ("red" if is_last else "blue")
-                folium.Marker(
-                    [wp["lat"], wp["lon"]],
-                    tooltip=f"<b>{wp['name']}</b> ({wp['lat']:.5f}, {wp['lon']:.5f})",
-                    popup=wp["name"],
-                    icon=folium.Icon(color=color, icon="play" if is_first else ("flag" if is_last else "info-sign"))
-                ).add_to(m_prev)
-
-            # Route line in green
-            folium.PolyLine(
-                dt["coordinates"],
-                color="#10B981",
-                weight=6,
-                opacity=0.9,
-                tooltip=f"Designed Route: {preview_data['name']}"
-            ).add_to(m_prev)
-
-            add_floating_legend(m_prev, mode="admin")
-            folium.LayerControl(position="topright").add_to(m_prev)
-            st_folium(m_prev, width=None, height=450, use_container_width=True, key="admin_waypoint_preview_map")
+                st.error(f"Failed to design route: {e}")
 
     # ---------------- TAB 2: FREEHAND MAP DRAWING TOOL ----------------
     with tab_freehand:
@@ -668,84 +567,46 @@ else:
             width=None,
             height=500,
             use_container_width=True,
-            key=f"admin_draw_map_{len(designed_routes)}"
+            key="admin_draw_map"
         )
 
-        if st.button("💾 Save Drawn Route", type="primary", use_container_width=True):
-            drawings = []
-            if draw_map_data:
-                drawings = draw_map_data.get("all_drawings") or []
-                if not drawings and draw_map_data.get("last_active_drawing"):
-                    drawings = [draw_map_data["last_active_drawing"]]
-
-            line_features = [f for f in drawings if f.get("geometry", {}).get("type") == "LineString"]
-            if not line_features:
-                st.warning("⚠️ No line drawing found! Click the **Polyline tool (diagonal line)** in the top-left map toolbar, draw your path on the satellite map, and then click Save.")
-            elif not draw_route_name.strip():
-                st.error("Please enter a Drawn Route Name.")
+        if st.button("💾 Save Drawn Route", type="primary"):
+            drawings = draw_map_data.get("all_drawings") if draw_map_data else None
+            if not drawings:
+                st.error("Please draw a route on the map using the Polyline tool first!")
             else:
-                feature = line_features[-1]
-                coords_lon_lat = feature["geometry"]["coordinates"]
-                coords_lat_lon = [[pt[1], pt[0]] for pt in coords_lon_lat]
+                # Find polyline feature
+                line_features = [f for f in drawings if f.get("geometry", {}).get("type") == "LineString"]
+                if not line_features:
+                    st.error("No polyline line drawing found. Please draw a line using the Polyline tool.")
+                else:
+                    feature = line_features[-1]
+                    coords_lon_lat = feature["geometry"]["coordinates"]
+                    coords_lat_lon = [[pt[1], pt[0]] for pt in coords_lon_lat]
 
-                try:
-                    saved_r = design_route_from_coordinates(
-                        name=draw_route_name,
-                        category=draw_category,
-                        description=draw_desc,
-                        coordinates=coords_lat_lon,
-                        lighting=draw_lighting,
-                        patrol=draw_patrol
-                    )
-                    st.session_state["admin_save_banner"] = f"🎉 **Drawn Route Saved Successfully!** '{saved_r['name']}' ({saved_r['distance_m']}m, ~{saved_r['walking_time_min']} mins walk) has been published and is now available in Tourist Navigation."
-                    st.rerun()
-                except Exception as e:
-                    st.error(f"Cannot save drawn route: {e}")
+                    try:
+                        saved_r = design_route_from_coordinates(
+                            name=draw_route_name,
+                            category=draw_category,
+                            description=draw_desc,
+                            coordinates=coords_lat_lon,
+                            lighting=draw_lighting,
+                            patrol=draw_patrol
+                        )
+                        st.success(f"Route '{saved_r['name']}' saved successfully! ({saved_r['distance_m']}m, {saved_r['walking_time_min']} mins).")
+                        st.rerun()
+                    except Exception as e:
+                        st.error(f"Cannot save route: {e}")
 
     # ---------------- TAB 3: ROUTE MANAGEMENT ----------------
     with tab_manage:
         st.subheader("Manage Published Official Routes")
-        st.caption(f"Total Official Routes: **{len(designed_routes)}**")
 
         if not designed_routes:
             st.info("No designed routes exist yet. Use Tab 1 or Tab 2 to create routes.")
         else:
-            # Map preview for selected route in management
-            if "manage_preview_id" in st.session_state:
-                target_route = next((r for r in designed_routes if r["id"] == st.session_state["manage_preview_id"]), None)
-                if target_route and target_route.get("coordinates"):
-                    st.markdown(f"#### 🗺️ Map Inspection: **{target_route['name']}**")
-                    p_lat = target_route["coordinates"][0][0]
-                    p_lon = target_route["coordinates"][0][1]
-                    m_insp = build_satellite_map(center_lat=p_lat, center_lon=p_lon, zoom=16)
-                    add_zones_to_map(m_insp, zones)
-
-                    for i, pt in enumerate(target_route.get("waypoints", [])):
-                        is_first = (i == 0)
-                        is_last = (i == len(target_route.get("waypoints", [])) - 1)
-                        color = "green" if is_first else ("red" if is_last else "blue")
-                        folium.Marker(
-                            [pt["lat"], pt["lon"]],
-                            tooltip=pt.get("name", "Waypoint"),
-                            icon=folium.Icon(color=color)
-                        ).add_to(m_insp)
-
-                    folium.PolyLine(
-                        target_route["coordinates"],
-                        color="#10B981",
-                        weight=6,
-                        opacity=0.9
-                    ).add_to(m_insp)
-
-                    add_floating_legend(m_insp, mode="admin")
-                    st_folium(m_insp, width=None, height=400, use_container_width=True, key=f"insp_map_{target_route['id']}")
-                    if st.button("✕ Close Map Inspection"):
-                        st.session_state.pop("manage_preview_id", None)
-                        st.rerun()
-
             for idx, r in enumerate(designed_routes):
-                status_icon = "🟢 ACTIVE" if r.get("is_active", True) else "⚪ INACTIVE"
-                with st.expander(f"{status_icon} | {r['name']} ({r.get('distance_m')} m, ~{r.get('walking_time_min')} mins)", expanded=(idx == 0)):
+                with st.expander(f"{'🟢' if r.get('is_active', True) else '⚪'} {r['name']} ({r.get('distance_m')} m, ~{r.get('walking_time_min')} mins)", expanded=(idx == 0)):
                     col_det1, col_det2 = st.columns([3, 1])
                     with col_det1:
                         st.markdown(f"**Category:** `{r.get('category_label', r.get('category'))}`")
@@ -754,10 +615,6 @@ else:
                         st.markdown(f"**Safety Breakdown:** Safe Zone: `{r.get('safe_distance_m', 0)}m` | High-Risk: `{r.get('high_risk_distance_m', 0)}m` | Restricted Violations: `{r.get('restricted_violations', 0)}`")
                         st.caption(f"ID: `{r['id']}` | Created: {r.get('created_at', 'N/A')}")
                     with col_det2:
-                        if st.button("👁️ View on Map", key=f"view_{r['id']}"):
-                            st.session_state["manage_preview_id"] = r["id"]
-                            st.rerun()
-
                         current_status = r.get("is_active", True)
                         status_label = "Deactivate" if current_status else "Activate"
                         if st.button(f"🔄 {status_label}", key=f"tgl_{r['id']}"):

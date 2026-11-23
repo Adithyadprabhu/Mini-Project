@@ -1,0 +1,13 @@
+{
+  "crime_rows": 290370,
+  "crime_date_min": "1916-12-30",
+  "crime_date_max": "2017-12-31",
+  "daily_weather_rows": 1797,
+  "daily_weather_start": "2021-01-01",
+  "daily_weather_end": "2025-12-02",
+  "hourly_weather_rows": 43123,
+  "hourly_weather_start": "2021-01-01 00:00:00",
+  "hourly_weather_end": "2025-12-02 23:00:00",
+  "timeline_rows": 39785,
+  "exact_overlap_dedup_rule": "event date + crime type + normalized location + beat; prefer crime reports.csv"
+}

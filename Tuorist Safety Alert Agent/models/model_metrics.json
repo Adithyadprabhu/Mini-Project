@@ -1,0 +1,93 @@
+{
+    "model_type": "RandomForestClassifier",
+    "train_samples": 21010,
+    "test_samples": 5516,
+    "split_method": "Chronological split (Train < 2016, Test >= 2016)",
+    "accuracy": 0.4231,
+    "macro_f1": 0.2608,
+    "weighted_f1": 0.5051,
+    "macro_precision": 0.2953,
+    "macro_recall": 0.3429,
+    "classification_report": {
+        "Low Risk": {
+            "precision": 0.8492239467849224,
+            "recall": 0.44022988505747124,
+            "f1-score": 0.5798637395912187,
+            "support": 4350.0
+        },
+        "Medium Risk": {
+            "precision": 0.07838070628768304,
+            "recall": 0.3285198555956679,
+            "f1-score": 0.12656467315716272,
+            "support": 277.0
+        },
+        "High Risk": {
+            "precision": 0.22335766423357664,
+            "recall": 0.3893129770992366,
+            "f1-score": 0.28385899814471244,
+            "support": 786.0
+        },
+        "Very High Risk": {
+            "precision": 0.030136986301369864,
+            "recall": 0.21359223300970873,
+            "f1-score": 0.05282112845138055,
+            "support": 103.0
+        },
+        "accuracy": 0.42313270485859317,
+        "macro avg": {
+            "precision": 0.29527482590188797,
+            "recall": 0.34291373769052114,
+            "f1-score": 0.26077713483611864,
+            "support": 5516.0
+        },
+        "weighted avg": {
+            "precision": 0.7060367762568406,
+            "recall": 0.42313270485859317,
+            "f1-score": 0.5050796646951725,
+            "support": 5516.0
+        }
+    },
+    "confusion_matrix": [
+        [
+            1915,
+            919,
+            994,
+            522
+        ],
+        [
+            86,
+            91,
+            41,
+            59
+        ],
+        [
+            226,
+            127,
+            306,
+            127
+        ],
+        [
+            28,
+            24,
+            29,
+            22
+        ]
+    ],
+    "feature_importances": {
+        "grid_lat": 0.1612,
+        "grid_lon": 0.149,
+        "month": 0.277,
+        "day_of_week_num": 0.1267,
+        "hour_bin": 0.0,
+        "is_weekend": 0.0141,
+        "is_night": 0.0,
+        "grid_historical_crimes": 0.272
+    },
+    "target_classes": [
+        "Low Risk",
+        "Medium Risk",
+        "High Risk",
+        "Very High Risk"
+    ],
+    "trained_at": "2026-11-23T10:24:37.027938"
+}

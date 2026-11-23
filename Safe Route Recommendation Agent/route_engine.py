@@ -535,19 +535,21 @@ def save_designed_routes(routes: list):
         return False
 
 
-def preview_route_from_waypoints(waypoints: list):
+def design_route_from_waypoints(name: str, category: str, description: str, waypoints: list, lighting: str = "Well Lit", patrol: str = "Regularly Monitored"):
     """
-    Calculate and preview a road-network route through waypoints without saving.
-    Returns route details dict (coordinates, distance, walking time, safety metrics).
+    Design an official route snapped to the road network through a series of waypoints.
+    Each waypoint is a dict: {"name": str, "lat": float, "lon": float}.
     """
     if len(waypoints) < 2:
-        raise ValueError("At least 2 waypoints (Start and Destination) are required to preview a route.")
+        raise ValueError("At least 2 waypoints (Start and Destination) are required to design a route.")
 
+    # Validate all waypoints within B.C. Road boundary
     for wp in waypoints:
         validate_coordinates(wp["lat"], wp["lon"], label=wp.get("name", "Waypoint"))
 
     G, zones = load_data()
 
+    # Check waypoints for restricted areas
     for wp in waypoints:
         check_restricted_point(wp["lat"], wp["lon"], zones, label=wp.get("name", "Waypoint"))
 
@@ -570,30 +572,7 @@ def preview_route_from_waypoints(waypoints: list):
         except nx.NetworkXNoPath:
             raise RuntimeError(f"No safe road path connects waypoint '{wp_start.get('name')}' to '{wp_end.get('name')}'.")
 
-    return extract_route_details(G_safe, combined_nodes, zones)
-
-
-def save_new_designed_route(route_dict: dict):
-    """Save a newly prepared route dictionary to designed_routes.json."""
-    if not route_dict.get("id"):
-        route_dict["id"] = str(uuid.uuid4())
-    if not route_dict.get("created_at"):
-        route_dict["created_at"] = datetime.now().isoformat()
-    if "is_active" not in route_dict:
-        route_dict["is_active"] = True
-
-    routes = load_designed_routes()
-    routes.append(route_dict)
-    save_designed_routes(routes)
-    return route_dict
-
-
-def design_route_from_waypoints(name: str, category: str, description: str, waypoints: list, lighting: str = "Well Lit", patrol: str = "Regularly Monitored"):
-    """
-    Design an official route snapped to the road network through a series of waypoints.
-    Each waypoint is a dict: {"name": str, "lat": float, "lon": float}.
-    """
-    details = preview_route_from_waypoints(waypoints)
+    details = extract_route_details(G_safe, combined_nodes, zones)
 
     category_labels = {
         "SAFE_CORRIDOR": "Designated Safe Corridor",

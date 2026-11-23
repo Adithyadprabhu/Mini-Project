@@ -1,0 +1,332 @@
+[
+    {
+        "id": "449425da-c7a8-49b3-864a-b8cdc62fde61",
+        "name": "Centennial Olympic Park Safe Haven",
+        "risk_level": "LOW",
+        "zone_type": "SAFE",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -84.3965,
+                        33.7585
+                    ],
+                    [
+                        -84.391,
+                        33.7585
+                    ],
+                    [
+                        -84.391,
+                        33.7635
+                    ],
+                    [
+                        -84.3965,
+                        33.7635
+                    ],
+                    [
+                        -84.3965,
+                        33.7585
+                    ]
+                ]
+            ]
+        }
+    },
+    {
+        "id": "45256c32-97a4-48fd-ae52-415b602435fd",
+        "name": "Piedmont Park Tourist Corridor",
+        "risk_level": "LOW",
+        "zone_type": "SAFE",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -84.378,
+                        33.782
+                    ],
+                    [
+                        -84.368,
+                        33.782
+                    ],
+                    [
+                        -84.368,
+                        33.7915
+                    ],
+                    [
+                        -84.378,
+                        33.7915
+                    ],
+                    [
+                        -84.378,
+                        33.782
+                    ]
+                ]
+            ]
+        }
+    },
+    {
+        "id": "f66513e9-32ac-4a9c-9d9b-5a194a2bcb8f",
+        "name": "Midtown Arts & Culture Safe Haven",
+        "risk_level": "LOW",
+        "zone_type": "SAFE",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -84.389,
+                        33.786
+                    ],
+                    [
+                        -84.381,
+                        33.786
+                    ],
+                    [
+                        -84.381,
+                        33.794
+                    ],
+                    [
+                        -84.389,
+                        33.794
+                    ],
+                    [
+                        -84.389,
+                        33.786
+                    ]
+                ]
+            ]
+        }
+    },
+    {
+        "id": "11f8907b-a7bb-49d1-93e7-f642419d0f83",
+        "name": "Downtown Central High-Theft Zone",
+        "risk_level": "HIGH",
+        "zone_type": "HIGH_RISK",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -84.393,
+                        33.75
+                    ],
+                    [
+                        -84.383,
+                        33.75
+                    ],
+                    [
+                        -84.383,
+                        33.757
+                    ],
+                    [
+                        -84.393,
+                        33.757
+                    ],
+                    [
+                        -84.393,
+                        33.75
+                    ]
+                ]
+            ]
+        }
+    },
+    {
+        "id": "2467f144-a134-463c-8f61-7b4b46fcf37a",
+        "name": "Old Fourth Ward Elevated Incident Zone",
+        "risk_level": "MEDIUM",
+        "zone_type": "HIGH_RISK",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -84.377,
+                        33.753
+                    ],
+                    [
+                        -84.366,
+                        33.753
+                    ],
+                    [
+                        -84.366,
+                        33.761
+                    ],
+                    [
+                        -84.377,
+                        33.761
+                    ],
+                    [
+                        -84.377,
+                        33.753
+                    ]
+                ]
+            ]
+        }
+    },
+    {
+        "id": "b82c8e53-cc47-412d-bc1e-f40f05bf3a86",
+        "name": "West End High Crime Risk Zone",
+        "risk_level": "HIGH",
+        "zone_type": "HIGH_RISK",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -84.43,
+                        33.732
+                    ],
+                    [
+                        -84.415,
+                        33.732
+                    ],
+                    [
+                        -84.415,
+                        33.742
+                    ],
+                    [
+                        -84.43,
+                        33.742
+                    ],
+                    [
+                        -84.43,
+                        33.732
+                    ]
+                ]
+            ]
+        }
+    },
+    {
+        "id": "db8bdc68-6278-43bd-a79b-f4dc15213960",
+        "name": "Bankhead Extreme Risk Area",
+        "risk_level": "VERY_HIGH",
+        "zone_type": "HIGH_RISK",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -84.45,
+                        33.765
+                    ],
+                    [
+                        -84.433,
+                        33.765
+                    ],
+                    [
+                        -84.433,
+                        33.775
+                    ],
+                    [
+                        -84.45,
+                        33.775
+                    ],
+                    [
+                        -84.45,
+                        33.765
+                    ]
+                ]
+            ]
+        }
+    },
+    {
+        "id": "e9dfb89b-d06f-45bb-b5ec-352de3e0e1aa",
+        "name": "Inman Industrial Rail Switching Yard",
+        "risk_level": "HIGH",
+        "zone_type": "RESTRICTED",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -84.445,
+                        33.795
+                    ],
+                    [
+                        -84.428,
+                        33.795
+                    ],
+                    [
+                        -84.428,
+                        33.805
+                    ],
+                    [
+                        -84.445,
+                        33.805
+                    ],
+                    [
+                        -84.445,
+                        33.795
+                    ]
+                ]
+            ]
+        }
+    },
+    {
+        "id": "bf4bc70a-03d8-483e-838a-9bb0de8e117d",
+        "name": "CSX Hulsey Intermodal Security Zone",
+        "risk_level": "HIGH",
+        "zone_type": "RESTRICTED",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -84.365,
+                        33.752
+                    ],
+                    [
+                        -84.35,
+                        33.752
+                    ],
+                    [
+                        -84.35,
+                        33.758
+                    ],
+                    [
+                        -84.365,
+                        33.758
+                    ],
+                    [
+                        -84.365,
+                        33.752
+                    ]
+                ]
+            ]
+        }
+    },
+    {
+        "id": "bfe0b090-1863-4a9d-979a-1f96ad3f1498",
+        "name": "Chattahoochee Municipal Water Works",
+        "risk_level": "HIGH",
+        "zone_type": "RESTRICTED",
+        "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+                [
+                    [
+                        -84.448,
+                        33.82
+                    ],
+                    [
+                        -84.432,
+                        33.82
+                    ],
+                    [
+                        -84.432,
+                        33.832
+                    ],
+                    [
+                        -84.448,
+                        33.832
+                    ],
+                    [
+                        -84.448,
+                        33.82
+                    ]
+                ]
+            ]
+        }
+    }
+]
