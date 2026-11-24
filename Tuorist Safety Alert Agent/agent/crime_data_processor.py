@@ -50,14 +50,9 @@ class CrimeDataProcessor:
 
     def __init__(self, data_dir: Optional[str] = None):
         if data_dir is None:
-            # Look in local datasets/ or parent dataset/
+            # Look in local datasets/
             base_dir = Path(__file__).resolve().parent.parent
-            if (base_dir / "datasets").exists():
-                self.data_dir = base_dir / "datasets"
-            elif (base_dir / "dataset" / "atlanta_crime_weather_project_dataset").exists():
-                self.data_dir = base_dir / "dataset" / "atlanta_crime_weather_project_dataset"
-            else:
-                self.data_dir = base_dir / "datasets"
+            self.data_dir = base_dir / "datasets"
         else:
             self.data_dir = Path(data_dir)
 
